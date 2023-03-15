@@ -1,5 +1,5 @@
 function loc() {
-    console.log(event.offsetX);
+    console.log(event.offsetY);
 }
 //document.getElementByID("game").onclick = function(event);
 document.addEventListener('click', function(event) {
@@ -19,15 +19,15 @@ document.addEventListener('click', function(event) {
     var relativeX = viewportX - elementX;
     var relativeY = viewportY - elementY;
     
-    console.log('Clicked element:', clickedElement);
+    /*console.log('Clicked element:', clickedElement);
     console.log('Viewport coordinates:', viewportX, viewportY);
     console.log('Element position:', elementX, elementY);
-    console.log('Relative coordinates:', relativeX, relativeY);
+    console.log('Relative coordinates:', relativeX, relativeY);*/
 
     //teleport the ghost to the mouse
-    //if(event.){
-        document.getElementById("ghost").style.top = relativeY + 'px';
-        document.getElementById("ghost").style.left = relativeX + 'px';
-    //}
+    if(clickedElement.id == "game" && relativeX < 483 && relativeX > 18 && relativeY < 466 && relativeY > 19){
+        document.getElementById("ghost").style.top = relativeY - 50 + 'px';
+        document.getElementById("ghost").style.left = relativeX - 20 + 'px';
+    }
     
   });
