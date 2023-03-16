@@ -1,5 +1,13 @@
+const MINX = 18;
+const MAXX = 483;
+const MINY = 19;
+const MAXY = 466;
+const GHOSTWIDTH = 20;
+const GHOSTHEIGHT = 50;
+
+
 function loc() {
-    console.log(event.offsetY);
+    //console.log(event.offsetY);
 }
 //document.getElementByID("game").onclick = function(event);
 document.addEventListener('click', function(event) {
@@ -25,9 +33,30 @@ document.addEventListener('click', function(event) {
     console.log('Relative coordinates:', relativeX, relativeY);*/
 
     //teleport the ghost to the mouse
-    if(clickedElement.id == "game" && relativeX < 483 && relativeX > 18 && relativeY < 466 && relativeY > 19){
-        document.getElementById("ghost").style.top = relativeY - 50 + 'px';
-        document.getElementById("ghost").style.left = relativeX - 20 + 'px';
+    if(clickedElement.id == "game" && relativeX < MAXX && relativeX > MINX && relativeY < MAXY && relativeY > MINY){
+        let ghost = document.getElementById("ghost");
+        let interval = setInterval(function() {
+            ghost.style.top = relativeY - GHOSTHEIGHT + 'px';
+            ghost.style.left = relativeX - GHOSTWIDTH + 'px';
+            //console.log(relativeY - GHOSTHEIGHT);
+            //console.log(ghost.style.left.slice(0,-2));
+            //console.log(Math.abs(ghost.style.left.slice(0,-2) - (relativeX- GHOSTWIDTH)));
+            //console.log(relativeX - GHOSTWIDTH);
+        }, 10)
+        if(closeEnough(ghost.style.left.slice(0,-2), relativeX - GHOSTWIDTH, ghost.style.top.slice(0,-2), relativeY - GHOSTHEIGHT)){
+            console.log("here");
+            clearInterval(interval);
+        }
+        
+        
     }
     
   });
+
+  function closeEnough(x1, x2, y1, y2) {
+    console.log(Math.abs(x1 - x2));
+    if(Math.abs(x1 - x2) < 10 && Math.abs(y1 - y2) < 10) {
+        return true;
+    }
+    return false;
+  }

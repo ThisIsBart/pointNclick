@@ -1,8 +1,18 @@
+body{
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
 #game{
-    margin-left: 25%;
     background-color: #098765;
-    width: 500px;
-    height: 500px;
+    color: #999999;
+    width: 800px;
+    height: 608px;
+    grid-column-start: 2;
+    
+
 }
 #ghost{
     width: 40px;
