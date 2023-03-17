@@ -5,10 +5,19 @@
         <title>Ghost adventure</title> 
     </head>
     <body>
-        <Div id="game" onclick="loc()">
-            <p>Mrs. Skeleton will remember that</p>
+        <h1 id="mainTitle">Mrs. Skeleton will remember that</h1>
+        <div id="game" onclick="loc()">
+            <!-- Foreground -->
+            <!-- Character -->
+            <div id="mainCharacter" class="character">
+                <img src="images/redguy.gif" alt="The main character didn't load">
+            </div>
+            <!-- Background -->
+            <div id="tilemap" class="background">
+                <img src="images/tilemap-v1.jpg" alt="The background didn't load">
+            </div>
             <img id="ghost" src="images/ghost.png">
-        </Div>
+        </div>
         <script src="js/index.js"></script>
     </body>
 </html>

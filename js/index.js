@@ -19,7 +19,7 @@ document.addEventListener('click', function(event) {
     var clickedElement = event.target;
     
     // Get the position of the element relative to the viewport
-    var elementRect = clickedElement.getBoundingClientRect();
+    var elementRect = document.getElementById("game").getBoundingClientRect();
     var elementX = elementRect.left + window.scrollX;
     var elementY = elementRect.top + window.scrollY;
     
@@ -31,27 +31,33 @@ document.addEventListener('click', function(event) {
     console.log('Viewport coordinates:', viewportX, viewportY);
     console.log('Element position:', elementX, elementY);
     console.log('Relative coordinates:', relativeX, relativeY);*/
-
+    //console.log(clickedElement.id);
     //teleport the ghost to the mouse
-    if(clickedElement.id == "game" && relativeX < MAXX && relativeX > MINX && relativeY < MAXY && relativeY > MINY){
+    if(document.getElementById("game").contains(clickedElement)){
         let ghost = document.getElementById("ghost");
-        let interval = setInterval(function() {
+        let ghostWalk = setInterval(ghostMove, 10);
+        //let interval = setInterval(function() {
             ghost.style.top = relativeY - GHOSTHEIGHT + 'px';
             ghost.style.left = relativeX - GHOSTWIDTH + 'px';
             //console.log(relativeY - GHOSTHEIGHT);
             //console.log(ghost.style.left.slice(0,-2));
             //console.log(Math.abs(ghost.style.left.slice(0,-2) - (relativeX- GHOSTWIDTH)));
             //console.log(relativeX - GHOSTWIDTH);
-        }, 10)
-        if(closeEnough(ghost.style.left.slice(0,-2), relativeX - GHOSTWIDTH, ghost.style.top.slice(0,-2), relativeY - GHOSTHEIGHT)){
+        //}, 10)
+        /*if(closeEnough(ghost.style.left.slice(0,-2), relativeX - GHOSTWIDTH, ghost.style.top.slice(0,-2), relativeY - GHOSTHEIGHT)){
             console.log("here");
             clearInterval(interval);
-        }
+        }*/
         
         
     }
     
   });
+
+  function ghostMove() {
+    
+    document.getElementById("ghost").style.top += 
+  }
 
   function closeEnough(x1, x2, y1, y2) {
     console.log(Math.abs(x1 - x2));
