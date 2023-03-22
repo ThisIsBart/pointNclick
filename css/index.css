@@ -48,3 +48,18 @@ body{
     top: 235px;
     left: 165px;
 }
+
+#door1{
+    top: 50px;
+    left: 465px;
+    width: 31px;
+    height: 47px;
+    background-color: aliceblue;
+}
+#platform{
+    top: 289px;
+    left: 557px;
+    width: 165px;
+    height: 95px;
+    background-color: aliceblue;
+}
