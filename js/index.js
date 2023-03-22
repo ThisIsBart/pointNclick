@@ -1,62 +1,76 @@
-const MINX = 18;
-const MAXX = 483;
-const MINY = 19;
-const MAXY = 466;
+// Used to centre the ghost
 const GHOSTWIDTH = 20;
-const GHOSTHEIGHT = 50;
+const GHOSTHEIGHT = 20;
+// (distX/gameWidth)/frames -> 
+// The goal of the ghost
+let relativeX;
+let relativeY;
+// The ghost when the mouse was clicked
+let ghostCurrentX;
+let ghostCurrentY;
 
+// The interval that moves the ghost and the number of frames passed since starting the walk
+let ghostwalk;
+let count = 0;
 
-function loc() {
-    //console.log(event.offsetY);
-}
-//document.getElementByID("game").onclick = function(event);
 document.addEventListener('click', function(event) {
     // Get the viewport coordinates of the click event
-    var viewportX = event.clientX;
-    var viewportY = event.clientY;
+    let viewportX = event.clientX;
+    let viewportY = event.clientY;
     
     // Get the element that was clicked
-    var clickedElement = event.target;
+    let clickedElement = event.target;
     
     // Get the position of the element relative to the viewport
-    var elementRect = document.getElementById("game").getBoundingClientRect();
-    var elementX = elementRect.left + window.scrollX;
-    var elementY = elementRect.top + window.scrollY;
+    let elementRect = document.getElementById("game").getBoundingClientRect();
+    let elementX = elementRect.left + window.scrollX;
+    let elementY = elementRect.top + window.scrollY;
     
     // Calculate the relative position of the click event within the element
-    var relativeX = viewportX - elementX;
-    var relativeY = viewportY - elementY;
-    
-    /*console.log('Clicked element:', clickedElement);
-    console.log('Viewport coordinates:', viewportX, viewportY);
-    console.log('Element position:', elementX, elementY);
-    console.log('Relative coordinates:', relativeX, relativeY);*/
-    //console.log(clickedElement.id);
-    //teleport the ghost to the mouse
+    relativeX = viewportX - elementX;
+    relativeY = viewportY - elementY;
+
+    //set the current position of the ghost
+    ghostCurrentX = elementRect.left + window.scrollX;
+    ghostCurrentY = elementRect.top + window.scrollY;
+    // Teleport the ghost to the mouse
     if(document.getElementById("game").contains(clickedElement)){
         let ghost = document.getElementById("ghost");
-        let ghostWalk = setInterval(ghostMove, 10);
-        //let interval = setInterval(function() {
-            ghost.style.top = relativeY - GHOSTHEIGHT + 'px';
-            ghost.style.left = relativeX - GHOSTWIDTH + 'px';
-            //console.log(relativeY - GHOSTHEIGHT);
-            //console.log(ghost.style.left.slice(0,-2));
-            //console.log(Math.abs(ghost.style.left.slice(0,-2) - (relativeX- GHOSTWIDTH)));
-            //console.log(relativeX - GHOSTWIDTH);
-        //}, 10)
-        /*if(closeEnough(ghost.style.left.slice(0,-2), relativeX - GHOSTWIDTH, ghost.style.top.slice(0,-2), relativeY - GHOSTHEIGHT)){
-            console.log("here");
-            clearInterval(interval);
-        }*/
-        
-        
+        ghostWalk = setInterval(ghostMove(viewportX, viewportY), 10);
+        //ghost.style.top = relativeY - GHOSTHEIGHT + 'px';
+        //ghost.style.left = relativeX - GHOSTWIDTH + 'px';
     }
     
   });
 
-  function ghostMove() {
+  function ghostMove(viewportX, viewportY) {
+    //calculate the difference between where the ghost is and where it should go
+    let diffy = (parseInt(document.getElementById("ghost").style.top) - viewportY) - relativeY;
+    let diffx = (parseInt(document.getElementById("ghost").style.left) - viewportX) -  relativeX;
+
+    console.log(diffy + " + " + diffx)
+    //If you're there, stop walking
+    //console.log(Math.abs(parseInt(document.getElementById("ghost").offsetTop)-viewportY, relativeY) < 100 && Math.abs(parseInt(document.getElementById("ghost").offsetLeft) - viewportX, relativeX) < 100);
+    if(diffy < 2 && diffx < 2) {
+        console.log("here");
+        clearInterval(ghostWalk);
+
+        return;
+    }
+
     
-    document.getElementById("ghost").style.top += 
+    if(parseInt(document.getElementById("ghost").offsetTop) < relativeY) {
+        document.getElementById("ghost").style.top = parseInt(parseInt(document.getElementById("ghost").offsetTop)) + 1 + 'px';
+    }
+    else if(parseInt(document.getElementById("ghost").offsetTop) > relativeY) {
+        document.getElementById("ghost").style.top = parseInt(parseInt(document.getElementById("ghost").offsetTop)) - 1 + 'px';
+    }
+    if(parseInt(document.getElementById("ghost").offsetLeft) < relativeX) {
+        document.getElementById("ghost").style.left = parseInt(parseInt(document.getElementById("ghost").offsetLeft)) + 1 + 'px';
+    }
+    else if(parseInt(document.getElementById("ghost").offsetLeft) > relativeX) {
+        document.getElementById("ghost").style.left = parseInt(parseInt(document.getElementById("ghost").offsetLeft)) - 1 + 'px';
+    }
   }
 
   function closeEnough(x1, x2, y1, y2) {
