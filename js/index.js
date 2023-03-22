@@ -1,16 +1,18 @@
 // Used to centre the ghost
 const GHOSTWIDTH = 20;
 const GHOSTHEIGHT = 20;
-// (distX/gameWidth)/frames -> 
+ 
 // The goal of the ghost
 let relativeX;
 let relativeY;
+
 // The ghost when the mouse was clicked
 let ghostCurrentX;
 let ghostCurrentY;
 
-// The interval that moves the ghost and the number of frames passed since starting the walk
+// The interval that moves the ghost, the walking speed and the number of frames passed since starting the walk
 let ghostwalk;
+let speed = 5;
 let count = 0;
 
 document.addEventListener('click', function(event) {
@@ -33,6 +35,7 @@ document.addEventListener('click', function(event) {
     //set the current position of the ghost
     ghostCurrentX = elementRect.left + window.scrollX;
     ghostCurrentY = elementRect.top + window.scrollY;
+
     // Teleport the ghost to the mouse
     if(document.getElementById("game").contains(clickedElement)){
         let ghost = document.getElementById("ghost");

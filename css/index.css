@@ -4,7 +4,7 @@ body{
     display: grid;
     grid-template-columns: auto 800px auto;
     grid-template-rows: auto auto;
-    animation: all 1 ease-in-out;
+    
 }
 
 #mainTitle{
@@ -13,7 +13,7 @@ body{
     text-align: center;
 }
 
-#game{
+#gameWindow{
     background-color: #098765;
     color: #999999;
     width: 800px;
@@ -21,7 +21,6 @@ body{
     grid-column-start: 2;
     grid-row-start: 2;
     position: relative;
-
 }
 
 .background{
@@ -32,6 +31,8 @@ body{
 .character{
     position: absolute;
     z-index: 100;
+    transition: all 1s ease-in-out;
+
 }
 
 .foreground{
