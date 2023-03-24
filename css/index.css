@@ -47,6 +47,7 @@ body{
 #mainCharacter{
     top: 235px;
     left: 165px;
+    
 }
 
 #door1{
@@ -54,12 +55,67 @@ body{
     left: 465px;
     width: 31px;
     height: 47px;
-    background-color: aliceblue;
+    
 }
 #platform{
     top: 289px;
     left: 557px;
     width: 165px;
     height: 95px;
-    background-color: aliceblue;
+}
+
+.messageBox{
+    content: ' ';
+    padding: 10px;
+    border: 9px solid transparent;
+}
+
+.speech-bubble {
+	position: relative;
+	background: #ffffff;
+	border-radius: 60px;
+    color: #000;
+    padding: 5px 5px 5px 10px;
+    font-size: 12px;
+    left: 64px;
+    opacity: 0;
+    width: 400px;
+    transition: all 1s ease-in-out;
+}
+
+/*.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 15px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-top-color: #ffffff;
+	border-bottom: 0;
+	border-left: 0;
+	margin-left: -3px;
+	margin-bottom: -6px;
+}*/
+
+#dialogueBar{
+    height: 64px;
+    bottom: 0;
+    position: absolute;
+}
+
+#mainCharacterPortrait{
+    position: absolute;
+}
+
+#dialogueBackground{
+    position: absolute;
+    height: 32px;
+    width: 800px;
+    background-color: #774444;
+    bottom: 0;
+}
+
+#ghostpic{
+    width: 40px;
 }
