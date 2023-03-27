@@ -40,13 +40,9 @@ body{
     z-index: 1000;
 }
 
-#tilemap{
-
-}
-
 #mainCharacter{
-    top: 235px;
-    left: 165px;
+    top: 247px;
+    left: 400px;
     
 }
 
@@ -55,13 +51,28 @@ body{
     left: 465px;
     width: 31px;
     height: 47px;
-    
 }
+
+#doorPic{
+    top: 50px;
+    left: 465px;
+    width: 31px;
+    height: 47px;
+}
+
 #platform{
-    top: 289px;
+    top: 313px;
     left: 557px;
     width: 165px;
     height: 95px;
+}
+
+#platformPic{
+    top: 313px;
+    left: 557px;
+    width: 165px;
+    height: 95px;
+    transition: all 1s ease-in-out;
 }
 
 .messageBox{
@@ -83,20 +94,9 @@ body{
     transition: all 1s ease-in-out;
 }
 
-/*.speech-bubble:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 15px;
-	width: 0;
-	height: 0;
-	border: 6px solid transparent;
-	border-top-color: #ffffff;
-	border-bottom: 0;
-	border-left: 0;
-	margin-left: -3px;
-	margin-bottom: -6px;
-}*/
+#otherSpeech {
+    left: 311px;
+}
 
 #dialogueBar{
     height: 64px;
@@ -117,5 +117,7 @@ body{
 }
 
 #ghostpic{
-    width: 40px;
+    position: absolute;
+    top: 229px;
+    left: 165px;
 }

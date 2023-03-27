@@ -8,25 +8,33 @@
         <h1 id="mainTitle">Mrs. Skeleton will remember that</h1>
         <div id="gameWindow">
             <!-- Foreground -->
+            <img src="images/Wooden platform.png" id="platformPic" class="foreground">   
+            <!-- Dialogue-->
             <div id="dialogueBar" class="foreground">
-                <div id="dialogueBackground"></div>
+                <div id="dialogueBackground"></div>                
+                
                 <img src="images/redguyportrait.png" id="mainCharacterPortrait" class="foreground" alt="portrait">
                 <div class="speech-bubble" id="mainCharacterSpeech" class="foreground">...</div>
-                
+                <div class="speech-bubble" id="otherSpeech" class="foreground">...</div>
+             
             </div>
-            <div id="ghost" class="foreground">
-                <img src="images/ghost.png" id="ghostpic" alt="The ghost is gone">
-            </div>
+            
             <div id="door1" class = "foreground"></div>
             <div id="platform" class = "foreground"></div>
             <!-- Character -->
+            <div id="ghost" class="character">
+                <img src="images/brainguy.gif" id="ghostpic" alt="The ghost is gone">
+            </div>
             <div id="mainCharacter" class="character">
                 <img src="images/redguy.gif" alt="The main character didn't load">
             </div>
+            
             <!-- Background -->
+            
             <div id="tilemap" class="background">
                 <img src="images/tilemap-v1.jpg" alt="The background didn't load">
             </div>
+            <img src="images/Door open.png" id="doorPic" class="background">
             
         </div>
         <audio id="heroSounds">
@@ -35,4 +43,5 @@
         <script src="js/class.js"></script>
     </body>
 </html>
-<!--persona-like bar for conversations at the bottom-->
+<!--persona-like bar for conversations at the bottom
+inventory with arrays?-->
