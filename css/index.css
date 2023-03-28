@@ -121,3 +121,14 @@ body{
     top: 229px;
     left: 165px;
 }
+
+#inventorySquare{
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    height: 100px;
+    background-color: #000;
+    color: #ffffff;
+    border: 3px solid #fff;
+}
