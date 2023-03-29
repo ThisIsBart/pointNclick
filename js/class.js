@@ -101,18 +101,24 @@ gameWindow.onclick = function(event){
             break;
         // Conversation tree option 1
         case "option1":
+            mainCharacter.style.left = "289px";
+            mainCharacter.style.top = "465px";
             hideSpeechBubble(mainCharacterSpeech, heroPortrait);
             showSpeechBubble("I wasn't expecting you!", otherSpeech, cellarPortrait);
-            setTimeout(function(){showSpeechBubble("No-one expects the Spanish Inquisistion", mainCharacterSpeech, heroPortrait)}, 5000);
+            setTimeout(function(){showSpeechBubble("No-one expects the Spanish Inquisition", mainCharacterSpeech, heroPortrait)}, 5000);
             break;
         // Conversation tree option 2
         case "option2":
+            mainCharacter.style.left = "289px";
+            mainCharacter.style.top = "465px";
             hideSpeechBubble(mainCharacterSpeech, heroPortrait);
             showSpeechBubble("Alex who?", otherSpeech, cellarPortrait);
             setTimeout(function(){showSpeechBubble("Alex plain after you open the door.", mainCharacterSpeech, heroPortrait)}, 5000);
             break;
         // Conversation tree option 3
         case "option3":
+            mainCharacter.style.left = "289px";
+            mainCharacter.style.top = "465px";
             hideSpeechBubble(mainCharacterSpeech, heroPortrait);
             showSpeechBubble("Maybe a tenner'll refresh your memory.", otherSpeech, cellarPortrait);
             let tenner = document.createElement("li");
