@@ -1,3 +1,4 @@
+/* Boilerplate stuff */
 body{
     background-color: black;
     color: white;
@@ -23,21 +24,32 @@ body{
     position: relative;
 }
 
+.foreground{
+    position: absolute;
+    z-index: 1000;
+}
+
 .background{
     position: absolute;
     z-index: 0;
 }
 
+#inventorySquare{
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    width: 200px;
+    height: 100px;
+    background-color: #000;
+    color: #ffffff;
+    border: 3px solid #fff;
+}
+/* Main character */
 .character{
     position: absolute;
     z-index: 100;
     transition: all 1s ease-in-out;
 
-}
-
-.foreground{
-    position: absolute;
-    z-index: 1000;
 }
 
 #mainCharacter{
@@ -46,6 +58,12 @@ body{
     
 }
 
+#ghostpic{
+    position: absolute;
+    top: 229px;
+    left: 165px;
+}
+/* Interactables */
 #door1{
     top: 50px;
     left: 465px;
@@ -82,7 +100,7 @@ body{
     width: 31px;
     height:31px;
 }
-
+/* Dialogue box */
 .messageBox{
     content: ' ';
     padding: 10px;
@@ -137,21 +155,4 @@ body{
     width: 800px;
     background-color: #774444;
     bottom: 0;
-}
-
-#ghostpic{
-    position: absolute;
-    top: 229px;
-    left: 165px;
-}
-
-#inventorySquare{
-    position:absolute;
-    top: 10px;
-    left: 10px;
-    width: 200px;
-    height: 100px;
-    background-color: #000;
-    color: #ffffff;
-    border: 3px solid #fff;
 }
