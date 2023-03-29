@@ -36,7 +36,7 @@ gameWindow.onclick = function(event){
             // Before the key is picked up
             if(!keyPickedUp){
                 showSpeechBubble("Top 'o the mornin'!", mainCharacterSpeech, heroPortrait, heroSounds);
-                setTimeout(function(){showSpeechBubble("No reply.<br>I'll teach 'em to waste me time.", mainCharacterSpeech, heroPortrait)}, 5000);
+                setTimeout(function(){showSpeechBubble("No reply.<br>I'll teach 'em to waste me time.", mainCharacterSpeech, heroPortrait, heroSounds)}, 5000);
             }
             // The first time you get here with the key
             else if(!door) {
@@ -149,6 +149,7 @@ function hideSpeechBubble(bubble, portrait) {
     portrait.style.opacity = 0;
     bubble.style.opacity = 0;
     bubble.innerHTML = " ... ";
+    //sound.pause();
 }
 // Conversation tree when talking to the cellar
 function cellarTree() {
