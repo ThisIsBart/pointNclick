@@ -22,6 +22,7 @@ let keyPickedUp = false;
 let door = false;
 
 gameWindow.onclick = function(event){
+    if(mainCharacterSpeech.style.opacity == 0 && otherSpeech.style.opacity == 0){
     // Have the hero go where the mouse was clicked
     var rect = gameWindow.getBoundingClientRect();
     var x = event.clientX - rect.left; // event's x position
@@ -136,7 +137,8 @@ gameWindow.onclick = function(event){
             break;
     }
 }
-//displays the matching speech bubble and calls the hide function after 5000 ms
+}
+//displays the matching speech bubble and calls the hide function after 5s
 function showSpeechBubble(dialogue, bubble, portrait, sound) {
     bubble.innerHTML = dialogue;
     sound.play();
@@ -154,7 +156,7 @@ function hideSpeechBubble(bubble, portrait) {
 // Conversation tree when talking to the cellar
 function cellarTree() {
     // Turn the speech balloon into a list
-    mainCharacterSpeech.innerHTML = "<ul id=\"multipeChoice\"></ul>";
+    mainCharacterSpeech.innerHTML = "<ul></ul>";
     // Create the options as list items
     let option1 = document.createElement("li");
     let option2 = document.createElement("li");
