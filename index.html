@@ -7,14 +7,17 @@
     <body>
         <h1 id="mainTitle">Mrs. Skeleton will remember that</h1>
         <div id="gameWindow">
+
             <!-- Foreground -->
+
+            <!-- Inventory-->
             <div id="inventorySquare" class="foreground">
                 <ul id="inventory">
 
                 </ul>
             </div>
             <img src="images/Wooden platform.png" id="platformPic" class="foreground">   
-            <!-- Dialogue-->
+            <!-- Dialogue bar-->
             <div id="dialogueBar" class="foreground">
                 <div id="dialogueBackground"></div>                
                 
@@ -25,11 +28,13 @@
                 <div class="speech-bubble" id="otherSpeech" class="foreground">...</div>
              
             </div>
-            
+            <!-- Interactibles -->
             <div id="door1" class = "foreground"></div>
             <div id="platform" class = "foreground"></div>
             <div id="cellar" class="foreground"></div>
-            <!-- Character -->
+
+            <!-- Characters -->
+
             <div id="ghost" class="character">
                 <img src="images/brainguy.gif" id="ghostpic" alt="The ghost is gone">
             </div>
@@ -45,8 +50,16 @@
             <img src="images/Door open.png" id="doorPic" class="background">
             
         </div>
+
+        <!-- Sounds -->
         <audio id="heroSounds">
             <source src="audio/ACvoiceIsabelle.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="brainGuySounds">
+            <source src="audio/ACvoiceIsabelle (1).mp3" type = "audio/mpeg">
+        </audio>
+        <audio>
+            <source src="audio/ACvoiceIsabelle (2).mp3" type = "audio/mpeg">
         </audio>
         <script src="js/class.js"></script>
     </body>
