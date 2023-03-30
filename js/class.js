@@ -21,8 +21,14 @@ const cellarSpeech = document.getElementById("cellarSounds");
 let spokenToBrainGuy = false;
 let keyPickedUp = false;
 let door = false;
+//Ricardo's array-based inventory
+let inventoryR = [];
+const inventoryList = document.getElementById("inventoryList");
 
 gameWindow.onclick = function(event){
+    if(document.getElementById("guy") != null) {
+        document.getElementById("guy").remove();
+    }
     if(mainCharacterSpeech.style.opacity == 0 && otherSpeech.style.opacity == 0){
         // Have the hero go where the mouse was clicked
         var rect = gameWindow.getBoundingClientRect();
@@ -110,7 +116,15 @@ gameWindow.onclick = function(event){
                 setTimeout(function(){showSpeechBubble("Who's there?", otherSpeech, cellarPortrait, cellarSpeech)}, 5000);
                 setTimeout(cellarTree, 10000);
                 break;
+            case "inventorySquare":
+                setTimeout(function(){
+                    let guy = document.createElement("li");
+                        guy.id = "guy";
+                        guy.innerText = "Main Character";
+                        inventory.append(guy);}, 500);
+                break;
             }
+            
         }
         // This is a separate switch because you need to be able to make a choice even if the conversation is happening
         switch(event.target.id) {
@@ -203,6 +217,33 @@ function drop(item) {
     setTimeout(function(){message.style.opacity = 0;}, 1000);
 }
 
+//Ricardo's array-based inventory
+function getItem(itemName, itemID) {
+    if(!checkItem(itemName)) {
+        inventoryR.push(itemName);
+        showItem(itemName, itemID);
+    }
+}
+
+function checkItem(item) {
+    return inventoryR.includes(item);
+}
+
+function showItem(itemName, itemID) {
+    let listItem = document.createElement("li");
+    listItem.id = itemID;
+    listItem.appendChild(document.createTextNode(itemName));
+    inventoryList.appendChild(listItem);
+}
+
+function removeItem(itemName, itemID) {
+    inventoryR = inventoryR.filter(function (newInventory) {
+        return newInventory !== itemName;
+    })
+    document.getElementById(itemID).remove();
+}
+
+//attempt at Floris' forbidden area
 function checkDeath(startX, startY, endX, endY) {
     
     let forbidden = document.getElementById("platform");
@@ -221,3 +262,8 @@ function checkDeath(startX, startY, endX, endY) {
         }
     }
 }
+getItem("bread", "bread");
+getItem("cold milk","milk");
+getItem("bread", "bread");
+removeItem("cold milk","milk");
+console.log(inventoryR)

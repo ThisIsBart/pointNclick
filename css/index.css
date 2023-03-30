@@ -44,6 +44,10 @@ body{
     color: #ffffff;
     border: 3px solid #fff;
 }
+
+#inventoryBox{
+    left: -84px;
+}
 /* Main character */
 .character{
     position: absolute;
