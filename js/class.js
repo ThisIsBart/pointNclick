@@ -6,6 +6,7 @@ const offsetCharacterY = 16;
 const gameWindow = document.getElementById("gameWindow");
 const inventory = document.getElementById("inventory");
 // Elements belonging to the hero
+const message = document.getElementById("itemPickUp");
 const mainCharacter = document.getElementById("mainCharacter");
 const heroSounds = document.getElementById("heroSounds");
 const heroPortrait = document.getElementById("mainCharacterPortrait");
@@ -25,15 +26,19 @@ gameWindow.onclick = function(event){
     if(mainCharacterSpeech.style.opacity == 0 && otherSpeech.style.opacity == 0){
         // Have the hero go where the mouse was clicked
         var rect = gameWindow.getBoundingClientRect();
+        let currX = mainCharacter.getBoundingClientRect().left;
+        let currY = mainCharacter.getBoundingClientRect().top;
         var x = event.clientX - rect.left; // event's x position
         var y = event.clientY - rect.top; // event's y position
         mainCharacter.style.left = x - offsetCharacterX + 'px';
-        mainCharacter.style.top = y - offsetCharacterY + 'px';
+        mainCharacter.style.top = y - offsetCharacterY - message.offsetHeight+ 'px';
+        console.log(currY);
+        //let endX = 
+        checkDeath(currX, currY, x - offsetCharacterX, y - offsetCharacterY - message.offsetHeight); 
         //make platform opaque
         document.getElementById("platformPic").style.opacity = 1;
         switch(event.target.id) {
             case "door1":
-                //heroSounds.play();
                 // Before the key is picked up
                 if(!keyPickedUp){
                     showSpeechBubble("Top 'o the mornin'!", mainCharacterSpeech, heroPortrait, heroSounds);
@@ -43,12 +48,14 @@ gameWindow.onclick = function(event){
                 else if(!door) {
                     showSpeechBubble("Key fits. Let's get to lootin'.", mainCharacterSpeech, heroPortrait, heroSounds);
                     document.getElementById("rustyKey").remove();
-                    document.getElementById("doorPic").style.opacity = 1;
+                    setTimeout(function(){drop("Rusty Key");
+                        document.getElementById("doorPic").style.opacity = 1;}, 500);
                     setTimeout(function(){
                         let rustyKey = document.createElement("li");
                         rustyKey.id = "money";
                         rustyKey.innerText = "$500,-";
                         inventory.append(rustyKey);
+                        pickup("$500,-");
                         showSpeechBubble("Score! This should buy me some Nando's an' then some.", mainCharacterSpeech, heroPortrait, heroSounds)},5000);
                     door = true;
                 }
@@ -74,7 +81,8 @@ gameWindow.onclick = function(event){
                         let rustyKey = document.createElement("li");
                         rustyKey.id = "rustyKey";
                         rustyKey.innerText = "Rusty Key";
-                        inventory.append(rustyKey);}, 5000);
+                        inventory.append(rustyKey);
+                        pickup("Rusty Key");}, 5000);
                 }
                 // After you've picked up the key
                 else{
@@ -104,36 +112,38 @@ gameWindow.onclick = function(event){
                 break;
             }
         }
+        // This is a separate switch because you need to be able to make a choice even if the conversation is happening
         switch(event.target.id) {
             // Conversation tree option 1
             case "option1":
-                mainCharacter.style.left = "289px";
-                mainCharacter.style.top = "465px";
+                //mainCharacter.style.left = "289px";
+                //mainCharacter.style.top = "465px";
                 hideSpeechBubble(mainCharacterSpeech, heroPortrait);
                 showSpeechBubble("I wasn't expecting you!", otherSpeech, cellarPortrait, cellarSpeech);
                 setTimeout(function(){showSpeechBubble("No-one expects the Spanish Inquisition", mainCharacterSpeech, heroPortrait, heroSounds)}, 5000);
                 break;
             // Conversation tree option 2
             case "option2":
-                mainCharacter.style.left = "289px";
-                mainCharacter.style.top = "465px";
+                //mainCharacter.style.left = "289px";
+                //mainCharacter.style.top = "465px";
                 hideSpeechBubble(mainCharacterSpeech, heroPortrait);
                 showSpeechBubble("Alex who?", otherSpeech, cellarPortrait, cellarSpeech);
                 setTimeout(function(){showSpeechBubble("Alex plain after you open the door.", mainCharacterSpeech, heroPortrait, heroSounds)}, 5000);
                 break;
             // Conversation tree option 3
             case "option3":
-                mainCharacter.style.left = "289px";
-                mainCharacter.style.top = "465px";
+                //mainCharacter.style.left = "289px";
+                //mainCharacter.style.top = "465px";
                 hideSpeechBubble(mainCharacterSpeech, heroPortrait);
                 showSpeechBubble("Maybe a tenner'll refresh your memory.", otherSpeech, cellarPortrait, cellarSpeech);
                 let tenner = document.createElement("li");
                 tenner.id = "tenner";
                 tenner.innerText = "$10,-";
                 inventory.append(tenner);
+                pickup("$10,-");
                 setTimeout(function(){showSpeechBubble("I'm the main character. Who want's to know?", mainCharacterSpeech, heroPortrait, heroSounds)}, 5000);
                 setTimeout(function(){showSpeechBubble("My memory's a bit lacking as of late.", otherSpeech, cellarPortrait, cellarSpeech)}, 10000);
-                setTimeout(function(){showSpeechBubble("How's this for a refresher?", mainCharacterSpeech, heroPortrait, heroSounds); document.getElementById("tenner").remove()}, 15000);
+                setTimeout(function(){showSpeechBubble("How's this for a refresher?", mainCharacterSpeech, heroPortrait, heroSounds); document.getElementById("tenner").remove(); drop("$10,-");}, 15000);
                 setTimeout(function(){showSpeechBubble("I'm the cellar used to test the conversation tree", otherSpeech, cellarPortrait, cellarSpeech)}, 20000);
             default:
                 //hideSpeechBubble(mainCharacterSpeech, heroPortrait);
@@ -177,4 +187,37 @@ function cellarTree() {
     mainCharacterSpeech.append(option3);
     mainCharacterSpeech.style.opacity = 1;
     heroPortrait.style.opacity = 1;
+}
+
+function pickup(item) {
+    message.style.opacity = 1;
+    message.style.color = "#11cc11";
+    message.innerText = "+" + item;
+    setTimeout(function(){message.style.opacity = 0;}, 1000);
+}
+
+function drop(item) {
+    message.style.opacity = 1;
+    message.style.color = "#ff1111";
+    message.innerText = "-" + item;
+    setTimeout(function(){message.style.opacity = 0;}, 1000);
+}
+
+function checkDeath(startX, startY, endX, endY) {
+    
+    let forbidden = document.getElementById("platform");
+    let xDiff = Math.abs(startX - endX);
+    let yDiff = Math.abs(startY - endY);
+    let checks = 11;
+    console.log(document.getElementById("platform").getBoundingClientRect().left + " " + document.getElementById("platform").getBoundingClientRect().top)
+    for(let i = 1; i < checks; i++) {
+        let xCurrent = startX + (i * (xDiff / checks));
+        let yCurrent = startY + (i * (yDiff / checks));
+        
+        console.log(startX + " -> " + xCurrent + " & " + startY + " -> " + yCurrent);
+        if(forbidden.style.left < xCurrent && forbidden.style.left + forbidden.style.width > xCurrent && 
+            forbidden.style.top < yCurrent && forbidden.style.top + forbidden.style.height > yCurrent) {
+            console.log("death");
+        }
+    }
 }

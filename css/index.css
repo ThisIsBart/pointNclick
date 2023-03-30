@@ -53,9 +53,8 @@ body{
 }
 
 #mainCharacter{
-    top: 247px;
+    top: 228px;
     left: 400px;
-    
 }
 
 #ghostpic{
@@ -65,8 +64,7 @@ body{
 }
 
 #itemPickUp{
-    top: 235px;
-    left: 395px;
+    opacity: 0;
 }
 /* Interactables */
 #door1{
@@ -138,6 +136,7 @@ body{
 #mainCharacterPortrait{
     position: absolute;
     opacity: 0;
+    transition: all 1s ease-in-out;
 }
 
 #brainGuyPortrait{
@@ -145,6 +144,7 @@ body{
     opacity: 0;
     left: 729px;
     transform: scaleX(-1);
+    transition: all 1s ease-in-out;
 }
 
 #cellarPortrait{
@@ -152,6 +152,7 @@ body{
     opacity: 0;
     left: 729px;
     transform: scaleX(-1);
+    transition: all 1s ease-in-out;
 }
 
 #dialogueBackground{
