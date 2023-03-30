@@ -47,6 +47,7 @@ body{
 
 #inventoryBox{
     left: -84px;
+    color: #000;
 }
 /* Main character */
 .character{

@@ -1,4 +1,4 @@
-document.getElementById("mainTitle").innerText = "ghost game";
+document.getElementById("mainTitle").innerText = "What 4 items can be put in the inventory?";
 // Offset to center hero
 const offsetCharacterX = 10;
 const offsetCharacterY = 16;
@@ -118,10 +118,12 @@ gameWindow.onclick = function(event){
                 break;
             case "inventorySquare":
                 setTimeout(function(){
-                    let guy = document.createElement("li");
+                    if(document.getElementById("guy") == null) {
+                        let guy = document.createElement("li");
                         guy.id = "guy";
                         guy.innerText = "Main Character";
-                        inventory.append(guy);}, 500);
+                        inventory.append(guy);
+                    }}, 500);
                 break;
             }
             
@@ -152,12 +154,12 @@ gameWindow.onclick = function(event){
                 showSpeechBubble("Maybe a tenner'll refresh your memory.", otherSpeech, cellarPortrait, cellarSpeech);
                 let tenner = document.createElement("li");
                 tenner.id = "tenner";
-                tenner.innerText = "$10,-";
+                tenner.innerText = "Bribe";
                 inventory.append(tenner);
-                pickup("$10,-");
+                pickup("$Bribe");
                 setTimeout(function(){showSpeechBubble("I'm the main character. Who want's to know?", mainCharacterSpeech, heroPortrait, heroSounds)}, 5000);
                 setTimeout(function(){showSpeechBubble("My memory's a bit lacking as of late.", otherSpeech, cellarPortrait, cellarSpeech)}, 10000);
-                setTimeout(function(){showSpeechBubble("How's this for a refresher?", mainCharacterSpeech, heroPortrait, heroSounds); document.getElementById("tenner").remove(); drop("$10,-");}, 15000);
+                setTimeout(function(){showSpeechBubble("How's this for a refresher?", mainCharacterSpeech, heroPortrait, heroSounds); document.getElementById("tenner").remove(); drop("Bribe");}, 15000);
                 setTimeout(function(){showSpeechBubble("I'm the cellar used to test the conversation tree", otherSpeech, cellarPortrait, cellarSpeech)}, 20000);
             default:
                 //hideSpeechBubble(mainCharacterSpeech, heroPortrait);
