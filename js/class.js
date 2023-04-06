@@ -41,7 +41,7 @@ gameWindow.onclick = function(event){
         mainCharacter.style.top = y - offsetCharacterY - message.offsetHeight+ 'px';
         console.log(currY);
         //let endX = 
-        checkDeath(currX, currY, x - offsetCharacterX, y - offsetCharacterY - message.offsetHeight); 
+        //checkDeath(currX, currY, x - offsetCharacterX, y - offsetCharacterY - message.offsetHeight); 
         //make platform opaque
         document.getElementById("platformPic").style.opacity = 1;
         switch(event.target.id) {
