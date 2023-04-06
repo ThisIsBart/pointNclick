@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="../css/index.css">
         <title>Ghost adventure</title> 
     </head>
     <body>
@@ -13,7 +13,7 @@
             <!-- Inventory-->
             <div id="inventorySquare" class="foreground">
                 <ul id="inventory">
-
+                    <li>AAAah</li>
                 </ul>
             </div>
             <!-- Ricardo's inventory -->
@@ -24,14 +24,14 @@
                 </ul>
             </div>
 
-            <img src="images/Wooden platform.png" id="platformPic" class="foreground">   
+            <img src="../images/Wooden platform.png" id="platformPic" class="foreground">   
             <!-- Dialogue bar-->
             <div id="dialogueBar" class="foreground">
                 <div id="dialogueBackground"></div>                
                 
-                <img src="images/redguyportrait.png" id="mainCharacterPortrait" class="foreground" alt="portrait">
-                <img src="images/brainGuyPortrait.png" id="brainGuyPortrait" class="foreground" alt="portrait">
-                <img src="images/cellar-door.png" id="cellarPortrait" class="foreground" alt="portrait">
+                <img src="../images/redguyportrait.png" id="mainCharacterPortrait" class="foreground" alt="portrait">
+                <img src="../images/brainGuyPortrait.png" id="brainGuyPortrait" class="foreground" alt="portrait">
+                <img src="../images/cellar-door.png" id="cellarPortrait" class="foreground" alt="portrait">
                 <div class="speech-bubble" id="mainCharacterSpeech" class="foreground">...</div>
                 <div class="speech-bubble" id="otherSpeech" class="foreground">...</div>
              
@@ -44,33 +44,33 @@
             <!-- Characters -->
 
             <div id="ghost" class="character">
-                <img src="images/brainguy.gif" id="ghostpic" alt="The ghost is gone">
+                <img src="../images/brainguy.gif" id="ghostpic" alt="The ghost is gone">
             </div>
             <div id="mainCharacter" class="character">
                 <div id="itemPickUp">Placeholder</div>
-                <img src="images/redguy.gif" alt="The main character didn't load">
+                <img src="../images/redguy.gif" alt="The main character didn't load">
             </div>
             
             
             <!-- Background -->
             
             <div id="tilemap" class="background">
-                <img id="tilemapImage" src="images/tilemap-v1.jpg" draggable="false" alt="The background didn't load">
+                <img src="../images/tilemap-v1.jpg" alt="The background didn't load">
             </div>
-            <img src="images/Door open.png" id="doorPic" class="background">
+            <img src="../images/Door open.png" id="doorPic" class="background">
             
         </div>
 
         <!-- Sounds -->
         <audio id="heroSounds">
-            <source src="audio/ACvoiceIsabelle.mp3" type="audio/mpeg">
+            <source src="../audio/ACvoiceIsabelle.mp3" type="audio/mpeg">
         </audio>
         <audio id="brainGuySounds">
-            <source src="audio/ACvoiceIsabelle (1).mp3" type = "audio/mpeg">
+            <source src="../audio/ACvoiceIsabelle (1).mp3" type = "audio/mpeg">
         </audio>
         <audio id="cellarSounds">
-            <source src="audio/ACvoiceIsabelle (2).mp3" type = "audio/mpeg">
+            <source src="../audio/ACvoiceIsabelle (2).mp3" type = "audio/mpeg">
         </audio>
-        <script src="js/class.js"></script>
+        <script src="../js/class.js"></script>
     </body>
 </html>

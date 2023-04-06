@@ -5,6 +5,7 @@ const offsetCharacterY = 16;
 // Global things
 const gameWindow = document.getElementById("gameWindow");
 const inventory = document.getElementById("inventory");
+const tilemapIMG = document.getElementById("tilemapImage");
 // Elements belonging to the hero
 const message = document.getElementById("itemPickUp");
 const mainCharacter = document.getElementById("mainCharacter");
@@ -27,7 +28,7 @@ const inventoryList = document.getElementById("inventoryList");
 
 gameWindow.onclick = function(event){
     if(document.getElementById("guy") != null) {
-        document.getElementById("guy").remove();
+        setTimeout(function(){document.getElementById("guy").remove();},500);
     }
     if(mainCharacterSpeech.style.opacity == 0 && otherSpeech.style.opacity == 0){
         // Have the hero go where the mouse was clicked
@@ -68,6 +69,8 @@ gameWindow.onclick = function(event){
                 // Subsequent times after you get the key
                 else{
                     showSpeechBubble("I should bolt 'fore the owner get's back.", mainCharacterSpeech, heroPortrait, heroSounds);
+                    //window.location.href = "pages/inside.html";
+                    //tilemapIMG.src="../images/inside.jpg";
                 }
                 break;
             case "platform":
@@ -245,25 +248,7 @@ function removeItem(itemName, itemID) {
     document.getElementById(itemID).remove();
 }
 
-//attempt at Floris' forbidden area
-function checkDeath(startX, startY, endX, endY) {
-    
-    let forbidden = document.getElementById("platform");
-    let xDiff = Math.abs(startX - endX);
-    let yDiff = Math.abs(startY - endY);
-    let checks = 11;
-    console.log(document.getElementById("platform").getBoundingClientRect().left + " " + document.getElementById("platform").getBoundingClientRect().top)
-    for(let i = 1; i < checks; i++) {
-        let xCurrent = startX + (i * (xDiff / checks));
-        let yCurrent = startY + (i * (yDiff / checks));
-        
-        console.log(startX + " -> " + xCurrent + " & " + startY + " -> " + yCurrent);
-        if(forbidden.style.left < xCurrent && forbidden.style.left + forbidden.style.width > xCurrent && 
-            forbidden.style.top < yCurrent && forbidden.style.top + forbidden.style.height > yCurrent) {
-            console.log("death");
-        }
-    }
-}
+//Testing Ricardo's inventory
 getItem("bread", "bread");
 getItem("cold milk","milk");
 getItem("bread", "bread");
